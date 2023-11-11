@@ -48,7 +48,7 @@ function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,
 }
 
 let matrix = matrixGenerator(20, 30, 1, 1, 12,1);
-let side = 40;
+let side = 30;
 
 //
 let grassArray = [];
@@ -94,21 +94,38 @@ function setup() {
 function draw() {
         for (let y = 0; y < matrix.length; y++) {
                 for (let x = 0; x < matrix[y].length; x++) {
+                        var toBot = side - side * 0.2
+                        textSize(toBot);
                         if (matrix[y][x] == 1) {
-                                fill("green")
-                        } else if (matrix[y][x] == 2) {
-                                fill('yellow')
-                        } else if (matrix[y][x] == 3) {
-                                fill("red")
-                        }else if(matrix[y][x]==4){
+                                fill("green");
+                                rect(x * side, y * side, side, side);
+                                text('🌿', x * side, y * side + toBot);
+                        } else if(matrix[y][x] == 2){
+                                fill ("brown")
+                                rect(x * side, y * side, side, side);
+                                text('🐗', x * side, y * side + toBot);
+                        }else if(matrix[y][x] == 3){
+                                fill("yellow")
+                                rect(x * side, y * side, side, side);
+                                text('🦁', x * side, y * side + toBot);
+                        }
+                        else if(matrix[y][x] == 4){
                                 fill("black")
-                        }else if(matrix[y][x]==5){
+                                rect(x * side, y * side, side, side);
+                                text("🌚", x * side, y * side + toBot);
+                        }
+                        else if(matrix[y][x] == 5){
                                 fill("white")
+                                rect(x * side, y * side, side, side);
+                                text('🌫', x * side, y * side + toBot);
                         }
+                       
+
                         else {
-                                fill("gray")
+                                fill("lightgreen")
+                                rect(x * side, y * side, side, side)
                         }
-                        rect(x * side, y * side, side, side)
+
                 }
         }
 
