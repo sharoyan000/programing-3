@@ -1,17 +1,14 @@
-let LivingCreature = require('./LivingCreature')
+let LivingCreature = require('./LivingCreature ')
 
 module.exports = class  GrassGenerator  extends LivingCreature  {
-    constructor(x, y) {
-        this.x = x
-        this.y = y
-       
-        this.directions = [];
+    constructor(x, y, ){
+        super(x, y, );
+        this.energy = 8
     }
-    
     
     move() {
         let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -28,8 +25,8 @@ module.exports = class  GrassGenerator  extends LivingCreature  {
       
 
     mul(){
-        let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell);
+        let emptyCells = this.chooseCell(0);
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if(newCell ){
             let newX = newCell[0];
             let newY = newCell[1];

@@ -1,22 +1,17 @@
-let LivingCreature = require('./LivingCreature')
+let LivingCreature = require('./LivingCreature ')
 
-module.exports = class GrassEater extends LivingCreatur {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 8;
-        this.directions = [
-
-        ];
+module.exports = class GrassEater extends LivingCreature {
+    constructor(x, y, ){
+        super(x, y, );
+        this.energy = 8
     }
-
 
 
  
     move() {
         this.energy--
         let emptyCells = this.chooseCell(0)
-        let newCell = random(emptyCells)
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
         if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
@@ -33,7 +28,7 @@ module.exports = class GrassEater extends LivingCreatur {
     mul(){
         this.multiply++;
         let emptyCell = this.chooseCell(0);
-        let newCell = random(emptyCell);
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)](emptyCell);
 
         if(newCell && this.multiply >= 4){
             let newX = newCell[0];
@@ -46,7 +41,7 @@ module.exports = class GrassEater extends LivingCreatur {
     }
     eat() {
         let foods = this.chooseCell(1)
-        let food = random(foods)
+        let food = foods[Math.floor(Math.random() * foods.length)]
         if (food) {
             this.energy++;
 
@@ -72,8 +67,8 @@ module.exports = class GrassEater extends LivingCreatur {
     }
   
     mul() {
-        let emptyCell = this.chooseCell(0)
-        let newCell = random(emptyCell)
+        let emptyCells = this.chooseCell(0)
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell ) {
             let newX = newCell[0]
