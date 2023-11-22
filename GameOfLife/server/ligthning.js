@@ -1,7 +1,38 @@
 const GrassEater = require("./grassEater");
 
 module.exports = class Lightning {
+    constructor(x, y) {
+        super(x, y, );
+        this.energy = 3
+ 
+
+    }
+
+    appear(){  
+        
+        chooseCell(0,2,3,4,5)
+
+    }
     
+
+    move() {
+        this.energy--
+        let emptyCells = this.chooseCell(0)
+        let newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+        if (newCell) {
+            let newX = newCell[0]
+            let newY = newCell[1]
+            matrix[this.y][this.x] = 0
+            matrix[newY][newX] = 2
+            this.x = newX
+            this.y = newY
+        }
+
+        if (this.energy <= 0) {
+            this.die()
+        }
+    }
+
     eat() {
         let foods = this.chooseCell(1)
         let food = foods[Math.floor(Math.random() * foods.length)]

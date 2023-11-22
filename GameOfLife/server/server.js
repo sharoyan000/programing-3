@@ -14,7 +14,7 @@ server.listen(3000, () => {
         console.log('connected');
 });
 
-function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount, HeroCount, GrassGeneratorCount) {
+function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount, HeroCount, GrassGeneratorCount,LightningCount) {
         let matrix = [];
         for (let i = 0; i < matrixSize; i++) {
                 matrix.push([]);
@@ -57,10 +57,18 @@ function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,
                         matrix[y][x] = 5
                 }
         }
+
+        // for (let i = 0; i < LightningCount; i++) {
+        //         let x = Math.floor(Math.random() * matrixSize);
+        //         let y = Math.floor(Math.random() * matrixSize);
+        //         if (matrix[y][x] == 0) {
+        //                 matrix[y][x] = 6
+        //         }
+        // }
         return matrix;
 }
 
-matrix = matrixGenerator(30, 20, 20,15,10, 12)
+matrix = matrixGenerator(30, 20, 20,15,10, 12,100)
 
 io.sockets.emit('send matrix', matrix)
 

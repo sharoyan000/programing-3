@@ -16,13 +16,13 @@
     ];
     }
     
-    chooseCell(char) {
+    chooseCell(char, car2) {
     let found = [];
     for (let i = 0; i < this.directions.length; i++) {
     let x = this.directions[i][0];
     let y = this.directions[i][1];
     if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-    if (matrix[y][x] == char) {
+    if (matrix[y][x] == char || matrix[y][x] == char2 || matrix[y][x] == char3|| matrix[y][x] == char4|| matrix[y][x] == char5) {
     found.push(this.directions[i])
     }
     

@@ -1,13 +1,13 @@
 let LivingCreature = require('./LivingCreature ')
-module.exports = class  Hero extends LivingCreature {
-    constructor(x,y){
-  super(x,y)
+module.exports = class Hero extends LivingCreature {
+    constructor(x, y) {
+        super(x, y)
         this.energy = 40
 
     }
-   
-    
-    
+
+
+
     move() {
         this.energy--
         let emptyCells = this.chooseCell(0)
@@ -25,12 +25,12 @@ module.exports = class  Hero extends LivingCreature {
             this.die()
         }
     }
-   
+
     mul() {
         let emptyCell = this.chooseCell(0)
         let newCell = [Math.floor(Math.random() * emptyCells.length)(emptyCells)](emptyCell)
 
-        if (newCell ) {
+        if (newCell) {
             let newX = newCell[0]
             let newY = newCell[1]
 
@@ -60,9 +60,9 @@ module.exports = class  Hero extends LivingCreature {
                     predatorArr.splice(i, 1);
                     break;
                 }
-            } 
-            
-           
+            }
+
+
 
             if (this.energy >= 450) {
                 this.mul()
@@ -73,16 +73,16 @@ module.exports = class  Hero extends LivingCreature {
         }
     }
 
-    
+
 
 
 
     die() {
-       
+
         matrix[this.y][this.x] = 0;
         for (var i in heroArr) {
             if (this.x == heroArr[i].x && this.y == heroArr[i].y) {
-               heroArr.splice(i, 1);
+                heroArr.splice(i, 1);
                 break;
             }
         }
