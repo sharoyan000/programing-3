@@ -1,5 +1,13 @@
 body{
-    background-image: url(aa.jpeg);
+    background-image: url("aa.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.lightning {
+    background-color: blue;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    color: aliceblue;
 }

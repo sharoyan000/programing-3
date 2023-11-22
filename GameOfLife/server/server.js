@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require("fs");
+const Lightning = require('./ligthning');
 
 app.use(express.static("../client"));
 
@@ -69,12 +70,14 @@ grassEaterArr = [];
 predatorArr = [];
 heroArr = [];
 grassGeneratorArr = [];
+lightArr = []
 
 Grass = require("./grass")
 GrassEater = require("./grassEater")
 Predator = require("./predator")
 Hero = require("./hero")
 GrassGenerator = require("./grassGenerator")
+Lightning = require("./ligthning")
 
 function createObject(matrix) {
         for (let y = 0; y < matrix.length; y++) {
@@ -100,6 +103,10 @@ function createObject(matrix) {
                         else if (matrix[y][x] == 5) {
                                 let gen = new GrassGenerator(x, y)
                                 grassGeneratorArr.push(gen);
+                        }
+                        else if (matrix[y][x] == 6) {
+                                let lig = new Lightning(x, y)
+                                lightArr.push(lig);
                         }
                 }
     
