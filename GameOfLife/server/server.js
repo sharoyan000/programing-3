@@ -3,7 +3,6 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require("fs");
-const Lightning = require('./ligthning');
 
 app.use(express.static("../client"));
 
@@ -156,3 +155,28 @@ function game() {
 io.on('connection', function () {
         createObject(matrix)
     })
+
+
+
+    var statistics ={
+        grass:0,
+        predator:0,
+        GrassEater:0,
+        hero:0,
+        GrassGenerator:0,
+
+
+    }
+
+    setInterval(function(){
+            statistics.grass = grassArray.length
+            statistics.GrassEater = grassEaterArr.length
+            statistics.predator = predatorArr.length
+            statistics.hero = heroArr.length
+            statistics.GrassGenerator = grassGeneratorArr.length
+
+            fs.writeFile("statistics.json",JSON.stringify(statistics),()=>{
+               console.log(statistics);     
+            })
+},1000)
+

@@ -4,8 +4,43 @@ body{
     background-repeat: no-repeat;
 }
 
-.lightning {
+.ligtning {
     background-color: blue;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    color: aliceblue;
+}
+
+
+.spring{
+    background-color: green;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    color: aliceblue;
+}
+
+
+.summar{
+    background-color: #ca0000;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    color: aliceblue;
+}
+
+
+.autumn{
+    background-color: yellow;
+    padding: 20px;
+    width: 200px;
+    border-radius: 50px;
+    color: aliceblue;
+}
+
+.winter {
+    background-color: rgb(4, 206, 241);
     padding: 20px;
     width: 200px;
     border-radius: 50px;

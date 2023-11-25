@@ -1,19 +1,13 @@
-const GrassEater = require("./grassEater");
 
 module.exports = class Lightning {
     constructor(x, y) {
-        super(x, y, );
         this.energy = 3
  
 
     }
-
-    appear(){  
-        
-        chooseCell(0,2,3,4,5)
-
-    }
     
+
+ 
 
     move() {
         this.energy--
