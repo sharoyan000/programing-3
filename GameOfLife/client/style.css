@@ -4,8 +4,8 @@ body{
     background-repeat: no-repeat;
 }
 
-.ligtning {
-    background-color: blue;
+.GameOver {
+    background-color: rgb(186, 186, 206);
     padding: 20px;
     width: 200px;
     border-radius: 50px;

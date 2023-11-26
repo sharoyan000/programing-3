@@ -34,7 +34,6 @@ module.exports = class  GrassGenerator  extends LivingCreature  {
             let newGrass = new Grass(newX, newY);
             grassArray.push(newGrass);
 
-            console.log(grassArray.length);
             if(grassArray.length >= 100){
                 matrix[newY][newX] = 3;
                 let newGrass = new Predator(this.x, this.y);

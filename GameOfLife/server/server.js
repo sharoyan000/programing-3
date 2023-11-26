@@ -57,17 +57,11 @@ function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,
                 }
         }
 
-        // for (let i = 0; i < LightningCount; i++) {
-        //         let x = Math.floor(Math.random() * matrixSize);
-        //         let y = Math.floor(Math.random() * matrixSize);
-        //         if (matrix[y][x] == 0) {
-        //                 matrix[y][x] = 6
-        //         }
-        // }
+   
         return matrix;
 }
 
-matrix = matrixGenerator(30, 20, 20,15,10, 12,100)
+matrix = matrixGenerator(30, 20, 20,15,10, 12,)
 
 io.sockets.emit('send matrix', matrix)
 
@@ -77,14 +71,14 @@ grassEaterArr = [];
 predatorArr = [];
 heroArr = [];
 grassGeneratorArr = [];
-lightArr = []
+
 
 Grass = require("./grass")
 GrassEater = require("./grassEater")
 Predator = require("./predator")
 Hero = require("./hero")
 GrassGenerator = require("./grassGenerator")
-Lightning = require("./ligthning")
+
 
 function createObject(matrix) {
         for (let y = 0; y < matrix.length; y++) {
@@ -93,7 +87,6 @@ function createObject(matrix) {
                                 let gr = new Grass(x, y)
                                 grassArray.push(gr);
                         }
-                        //GrassEate
                         else if (matrix[y][x] == 2) {
                                                             let gre = new GrassEater(x, y)
                                 grassEaterArr.push(gre);
@@ -111,10 +104,7 @@ function createObject(matrix) {
                                 let gen = new GrassGenerator(x, y)
                                 grassGeneratorArr.push(gen);
                         }
-                        else if (matrix[y][x] == 6) {
-                                let lig = new Lightning(x, y)
-                                lightArr.push(lig);
-                        }
+                       
                 }
     
         }
@@ -148,13 +138,8 @@ function game() {
         io.sockets.emit("send matrix", matrix);
     }
 
-    setInterval(game, 1000)
+    let id = setInterval(game, 1000)
 
-
-
-io.on('connection', function () {
-        createObject(matrix)
-    })
 
 
 
@@ -176,7 +161,35 @@ io.on('connection', function () {
             statistics.GrassGenerator = grassGeneratorArr.length
 
             fs.writeFile("statistics.json",JSON.stringify(statistics),()=>{
-               console.log(statistics);     
+     
             })
 },1000)
+
+
+  
+
+
+function GameOver(){
+        for (let i in grassEaterArr) {
+                grassEaterArr[i].die()
+        }
+
+        for (let i in predatorArr) {
+                predatorArr[i].die()
+        }
+        for (let i in heroArr) {
+                heroArr[i].die()
+        }
+
+        for (let i in grassGeneratorArr) {
+                grassGeneratorArr[i].die()
+        }
+        matrix = matrixGenerator(30, 20)
+        io.sockets.emit("send matrix", matrix);
+        clearInterval(id)
+}
+io.on('connection', function (socket) {
+        createObject(matrix)
+        socket.on("send gameover", GameOver)
+    })
 
